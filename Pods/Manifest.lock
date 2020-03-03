@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.9.1)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
+  - TextFieldEffects (1.6.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SDWebImage
+  - TextFieldEffects
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SDWebImage
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+
+PODFILE CHECKSUM: 393e20935ad093aa6ddfd5d50b98f342f1138a7a
+
+COCOAPODS: 1.8.4
