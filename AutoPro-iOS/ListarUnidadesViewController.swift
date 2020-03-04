@@ -45,7 +45,7 @@ class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
             cell.UnitsName.text = units[indexPath.row].name
-            let baseURL = URL(string: "http://localhost:8888/AutoPro-API-features-migrations/storage/app/public/")!
+            let baseURL = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/storage/app/public/")!
             let placeholderImage = UIImage(named: "autoescuela-logo.png")
             print(units)
         let remoteImageURL = baseURL.appendingPathComponent(units[indexPath.row].unit_url ?? "autoescuela-logo.png")
@@ -80,6 +80,7 @@ class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITab
 
         let json = ["api_token": "24"]
 //
+        
         Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
             print(response)
 

@@ -11,7 +11,8 @@ import UIKit
 class togglebutton: UIButton {
 
     var isOn = false
-    
+    var acierto = false
+    var fallo = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         initButton()
@@ -49,6 +50,28 @@ class togglebutton: UIButton {
         backgroundColor = color
     }
     
+    func aciertoColor(bool: Bool){
+        acierto = true
+        let color = bool ? Colors.greenbutton : .clear
+        var opcion: String = self.titleLabel!.text!
+        let title = bool ? opcion : opcion
+        let titleColor = bool ? Colors.bluebutton : Colors.bluebutton
+        
+        setTitle(title, for: .normal)
+        setTitleColor(titleColor, for: .normal)
+        backgroundColor = color
+    }
     
+    func falloColor(bool: Bool){
+        fallo = false
+        let color = bool ? Colors.redbutton : .clear
+        var opcion: String = self.titleLabel!.text!
+        let title = bool ? opcion : opcion
+        let titleColor = bool ? .white : Colors.bluebutton
+        
+        setTitle(title, for: .normal)
+        setTitleColor(titleColor, for: .normal)
+        backgroundColor = color
+    }
 }
 

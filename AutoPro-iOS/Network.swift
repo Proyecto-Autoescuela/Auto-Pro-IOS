@@ -105,7 +105,8 @@ class Network{
     // Examenes
     
     class func getTest(completed: @escaping () -> ()){
-        
+        //http://ec2-34-204-190-18.compute-1.amazonaws.com/
+//        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/prueba")
         let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/prueba")
         let json = ["unit_id": unitIdTest]
         

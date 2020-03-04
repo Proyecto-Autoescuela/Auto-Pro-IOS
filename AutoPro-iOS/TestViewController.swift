@@ -25,6 +25,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
+        arrayOption = ["", "", "", "", "", "", "", "", "", ""]
     }
     
     //metodo que indicamos que el tabeView tenga el mismo tamaño que el array

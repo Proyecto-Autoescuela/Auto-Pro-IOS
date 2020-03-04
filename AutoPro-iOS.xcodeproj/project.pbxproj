@@ -34,6 +34,7 @@
 		7FC641F823C65F8900F6434F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC641F623C65F8900F6434F /* Main.storyboard */; };
 		7FC641FA23C65F8A00F6434F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC641F923C65F8A00F6434F /* Assets.xcassets */; };
 		7FC641FD23C65F8A00F6434F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC641FB23C65F8A00F6434F /* LaunchScreen.storyboard */; };
+		7FE1B0E82410076E005BB50C /* ResultTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1B0E72410076E005BB50C /* ResultTestViewController.swift */; };
 		7FE55BCA23F47C4F0067CBA5 /* Unidades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE55BC923F47C4F0067CBA5 /* Unidades.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		7FC641F923C65F8A00F6434F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FC641FC23C65F8A00F6434F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FC641FE23C65F8A00F6434F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FE1B0E72410076E005BB50C /* ResultTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTestViewController.swift; sourceTree = "<group>"; };
 		7FE55BC923F47C4F0067CBA5 /* Unidades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unidades.swift; sourceTree = "<group>"; };
 		D2DE0D30A7F7421C5EAB1C5D /* Pods-AutoPro-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoPro-iOS.release.xcconfig"; path = "Target Support Files/Pods-AutoPro-iOS/Pods-AutoPro-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E61255B60F60E980844C3013 /* Pods_AutoPro_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoPro_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				7FC641FB23C65F8A00F6434F /* LaunchScreen.storyboard */,
 				7FC641FE23C65F8A00F6434F /* Info.plist */,
 				7FC4703324080B4000BB30D4 /* Alumnos.swift */,
+				7FE1B0E72410076E005BB50C /* ResultTestViewController.swift */,
 				7F7F7DB22406EDA300650A42 /* bluebutton.swift */,
 				7F7F7DB32406EDA400650A42 /* togglebutton.swift */,
 				7F10B6EC23D6362400A45B63 /* TestViewController.swift */,
@@ -272,6 +275,7 @@
 				7F48C9D323FEFD5800A43806 /* PerfilProfesorViewController.swift in Sources */,
 				7F20D76523F31D2E00B52EB7 /* Unidad.swift in Sources */,
 				7F10B6ED23D6362400A45B63 /* TestViewController.swift in Sources */,
+				7FE1B0E82410076E005BB50C /* ResultTestViewController.swift in Sources */,
 				7FBB844023E1F1AE007F4922 /* UnidadViewController.swift in Sources */,
 				7F2D896E23E32621006E838F /* Temario.swift in Sources */,
 				7FBD8BC323F5D0BB00F0F701 /* ListarUnidadesViewController.swift in Sources */,

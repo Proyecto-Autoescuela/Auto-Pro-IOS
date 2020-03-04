@@ -6,7 +6,10 @@ var questions = [Question]()
 var questionId:Int = 0
 var fallos:Int = 0
 var aciertos:Int = 0
+var numberPregunta:Int = 1
+var arrayOption:[String] = ["", "", "", "", "", "", "", "", "", ""]
 class QuestionsViewController: UIViewController {
+    
     @IBOutlet weak var answerA: UILabel!
     @IBOutlet weak var answerB: UILabel!
     @IBOutlet weak var answerC: UILabel!
@@ -19,13 +22,46 @@ class QuestionsViewController: UIViewController {
     @IBOutlet var answers: [togglebutton]!
     @IBOutlet weak var tittle: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    var numberPregunta:Int = 1
-    var arrayAciertos:[Bool] = [true, true, true,true, true, true, true, true, true, true,]
+    
+    var arrayAciertos:[Bool] = [true, true, true,true, true, true, true, true, true, true]
     @IBOutlet weak var numeroPregunta: UILabel!
     @IBOutlet weak var finaliza: UIButton!
     
     
     @IBAction func volver(_ sender: Any) {
+        if(buttonA.isOn || buttonB.isOn || buttonC.isOn){
+            if(buttonA.isOn){
+                arrayOption[questionId] = "a"
+                if(questions[questionId].correctAnswer.rawValue == "answer_a"){
+                    aciertos = aciertos+1
+                    arrayAciertos[questionId] = true
+                }else{
+                    fallos = fallos+1
+                    arrayAciertos[questionId] = false
+                }
+            }else if(buttonB.isOn){
+                arrayOption[questionId] = "b"
+                if(questions[questionId].correctAnswer.rawValue == "answer_b"){
+                    aciertos = aciertos+1
+                    arrayAciertos[questionId] = true
+                }else{
+                    fallos = fallos+1
+                    arrayAciertos[questionId] = false
+                }
+            }else{
+                arrayOption[questionId] = "c"
+                if(questions[questionId].correctAnswer.rawValue == "answer_c"){
+                    arrayAciertos[questionId] = true
+                    aciertos = aciertos+1
+                }else{
+                    fallos = fallos+1
+                    arrayAciertos[questionId] = false
+                }
+            }
+            
+            
+            reloadData()
+        }
         questionId = questionId - 1
         numberPregunta = numberPregunta-1
         
@@ -42,24 +78,36 @@ class QuestionsViewController: UIViewController {
             if(buttonA.isOn){
                 if(questions[questionId].correctAnswer.rawValue == "answer_a"){
                     aciertos = aciertos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
                     fallos = fallos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }
             }else if(buttonB.isOn){
                 if(questions[questionId].correctAnswer.rawValue == "answer_b"){
                     aciertos = aciertos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
                     fallos = fallos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }
             }else{
                 if(questions[questionId].correctAnswer.rawValue == "answer_c"){
                     aciertos = aciertos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
                     fallos = fallos+1
+                    questionId = 0
+                    self.performSegue(withIdentifier: "finalizar", sender: sender)
+                    
                 }
             }
-            questionId = 0
-            self.performSegue(withIdentifier: "finalizar", sender: sender)
+            
             
         }
         
@@ -67,6 +115,7 @@ class QuestionsViewController: UIViewController {
     @IBAction func nextQuestion(_ sender: UIButton) {
         if(buttonA.isOn || buttonB.isOn || buttonC.isOn){
             if(buttonA.isOn){
+                arrayOption[questionId] = "a"
                 if(questions[questionId].correctAnswer.rawValue == "answer_a"){
                     aciertos = aciertos+1
                     arrayAciertos[questionId] = true
@@ -75,6 +124,7 @@ class QuestionsViewController: UIViewController {
                     arrayAciertos[questionId] = false
                 }
             }else if(buttonB.isOn){
+                arrayOption[questionId] = "b"
                 if(questions[questionId].correctAnswer.rawValue == "answer_b"){
                     aciertos = aciertos+1
                     arrayAciertos[questionId] = true
@@ -83,6 +133,7 @@ class QuestionsViewController: UIViewController {
                     arrayAciertos[questionId] = false
                 }
             }else{
+                arrayOption[questionId] = "c"
                 if(questions[questionId].correctAnswer.rawValue == "answer_c"){
                     arrayAciertos[questionId] = true
                     aciertos = aciertos+1
@@ -115,10 +166,15 @@ class QuestionsViewController: UIViewController {
         reloadData()
         recargar.stopAnimating()
         numberPregunta = 1
-        numeroPregunta.text = String(numberPregunta)
+        numeroPregunta.text = "\(numberPregunta)/\(questions.count)"
     }
     
     private func reloadData(){
+        tittle.isEnabled = true
+        tittle.isHidden = false
+        finaliza.setNeedsDisplay()
+        finaliza.isEnabled = false
+        finaliza.isHidden = true
         if(questionId==questions.count-1){
             tittle.isEnabled = false
             tittle.isHidden = true
@@ -128,10 +184,21 @@ class QuestionsViewController: UIViewController {
             finaliza.isHidden = false
             
         }
+        answers.forEach { $0.activateButton(bool: false) }
+        switch arrayOption[questionId] {
+        case "a":
+            buttonA.activateButton(bool: true)
+        case "b":
+            buttonB.activateButton(bool: true)
+        case "c":
+            buttonC.activateButton(bool: true)
+        default:
+            answers.forEach { $0.activateButton(bool: false) }
+        }
         answerA.text = questions[questionId].answerA
         answerB.text = questions[questionId].answerB
         answerC.text = questions[questionId].answerC
-        numeroPregunta.text = String(numberPregunta)
+        numeroPregunta.text = "\(numberPregunta)/\(questions.count)"
         backButton.isHidden = false
         if(questionId==0){
             backButton.isHidden = true
@@ -141,6 +208,5 @@ class QuestionsViewController: UIViewController {
         let remoteImageURL = baseURL.appendingPathComponent(questions[questionId].photoURL)
         img?.sd_setImage(with: remoteImageURL, placeholderImage: placeholderImage)
         question.text = questions[questionId].question
-        answers.forEach { $0.activateButton(bool: false) }
     }
 }
