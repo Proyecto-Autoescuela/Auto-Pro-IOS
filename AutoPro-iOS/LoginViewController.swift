@@ -17,21 +17,36 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginName: UITextField!
     @IBOutlet weak var loginPassword: UITextField!
- 
+    
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Network.GetLessons{
-            //
-        }
-//        Network.postTest()
-        Network.getTest {
-            //
-        }
+        loginName.text = "raulgon@cev.com"
+        loginPassword.text = "raul123"
+        
+        
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(activityIndicator)
+        
+//        Network.GetLessons{
+//            //
+//        }
+        Network.postTest()
+//        Network.getTest {
+//            //
+//        }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func onClickButton(_ sender: Any) {
-        UserDefaults.standard.set(loginName.text!, forKey: "email")
+//        UserDefaults.standard.set(loginName.text!, forKey: "email")
+        
+        activityIndicator.startAnimating()
         
         guard let email = loginName.text, loginName.text?.count != 0 else {
                 createAlert(title: "Fallo", message: "Pon tu Usuario para continuar")
@@ -91,7 +106,10 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
+//
+//    @IBAction func loginButton(_ sender: Any) {
+//        activityIndicator.startAnimating()
+//    }
     
 }
 
