@@ -5,9 +5,12 @@ import SDWebImage
 var questions = [Question]()
 var questionId:Int = 0
 var fallos:Int = 0
+var fallo:Int = 0
+var acierto:Int = 0
 var aciertos:Int = 0
 var numberPregunta:Int = 1
 var arrayOption:[String] = ["", "", "", "", "", "", "", "", "", ""]
+var arrayAciertos:[Bool] = [true, true, true,true, true, true, true, true, true, true]
 class QuestionsViewController: UIViewController {
     
     @IBOutlet weak var answerA: UILabel!
@@ -23,7 +26,7 @@ class QuestionsViewController: UIViewController {
     @IBOutlet weak var tittle: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    var arrayAciertos:[Bool] = [true, true, true,true, true, true, true, true, true, true]
+    
     @IBOutlet weak var numeroPregunta: UILabel!
     @IBOutlet weak var finaliza: UIButton!
     
@@ -74,34 +77,48 @@ class QuestionsViewController: UIViewController {
     }
     @IBAction func finalizar(_ sender: Any) {
         if(buttonA.isOn || buttonB.isOn || buttonC.isOn){
+            for inde in arrayAciertos {
+                print(inde)
+                if(inde){
+                    acierto = acierto+1
+                }else{
+                    fallo = fallo+1
+                }
+            }
             
             if(buttonA.isOn){
+                arrayOption[questionId] = "a"
                 if(questions[questionId].correctAnswer.rawValue == "answer_a"){
-                    aciertos = aciertos+1
+                    
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
-                    fallos = fallos+1
+                    fallo = fallo+1
+                    acierto = acierto-1
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }
             }else if(buttonB.isOn){
+                arrayOption[questionId] = "b"
                 if(questions[questionId].correctAnswer.rawValue == "answer_b"){
-                    aciertos = aciertos+1
+                    
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
-                    fallos = fallos+1
+                    fallo = fallo+1
+                    acierto = acierto-1
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }
             }else{
+                arrayOption[questionId] = "c"
                 if(questions[questionId].correctAnswer.rawValue == "answer_c"){
-                    aciertos = aciertos+1
+                    
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                 }else{
-                    fallos = fallos+1
+                    fallo = fallo+1
+                    acierto = acierto-1
                     questionId = 0
                     self.performSegue(withIdentifier: "finalizar", sender: sender)
                     

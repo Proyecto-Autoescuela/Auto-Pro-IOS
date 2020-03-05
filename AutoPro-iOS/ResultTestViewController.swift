@@ -30,7 +30,6 @@ class ResultsTestViewController: UIViewController{
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     var numberPregunta:Int = 1
-    var arrayAciertos:[Bool] = [true, true, true,true, true, true, true, true, true, true]
     @IBOutlet weak var numeroPregunta: UILabel!
     @IBOutlet weak var finaliza: UIButton!
 
@@ -47,9 +46,16 @@ class ResultsTestViewController: UIViewController{
     private func reloadData(){
         tittle.isEnabled = true
         tittle.isHidden = false
+        print("opcion \(arrayOption[questionId]) respuesta \(questions[questionId].correctAnswer) acierot \(arrayAciertos[questionId])")
         endButton.setNeedsDisplay()
         endButton.isEnabled = false
         endButton.isHidden = true
+        buttonA.aciertoColor(bool: false)
+        buttonB.aciertoColor(bool: false)
+        buttonC.aciertoColor(bool: false)
+        buttonA.falloColor(bool: false)
+        buttonB.falloColor(bool: false)
+        buttonC.falloColor(bool: false)
         if(questionId==questions.count-1){
             tittle.isEnabled = false
             tittle.isHidden = true
@@ -59,36 +65,27 @@ class ResultsTestViewController: UIViewController{
             endButton.isHidden = false
             
         }
-        print(arrayOption[9])
         answers.forEach { $0.activateButton(bool: false) }
-        if(questions[0].correctAnswer.rawValue == "answer_a"){
+        if(questions[questionId].correctAnswer.rawValue == "answer_a"){
             buttonA.aciertoColor(bool: true)
-        }else if(questions[0].correctAnswer.rawValue == "answer_b"){
+        }else if(questions[questionId].correctAnswer.rawValue == "answer_b"){
             buttonB.aciertoColor(bool: true)
-        }else if(questions[0].correctAnswer.rawValue == "answer_c"){
+        }else if(questions[questionId].correctAnswer.rawValue == "answer_c"){
             buttonC.aciertoColor(bool: true)
         }
-        switch arrayOption[questionId] {
-        case "a":
-            if(buttonA.acierto){
-                buttonA.aciertoColor(bool: true)
-            }else{
-                buttonA.falloColor(bool: true)
+        if(arrayAciertos[questionId]==false){
+            switch arrayOption[questionId] {
+                case "a":
+                        buttonA.falloColor(bool: true)
+                case "b":
+                        buttonB.falloColor(bool: true)
+                
+                case "c":
+                        buttonC.falloColor(bool: true)
+                default:
+                    break
             }
-        case "b":
-            if(buttonB.acierto){
-                buttonB.aciertoColor(bool: true)
-            }else{
-                buttonB.falloColor(bool: true)
-            }
-        case "c":
-            if(buttonC.acierto){
-                buttonC.aciertoColor(bool: true)
-            }else{
-                buttonC.falloColor(bool: true)
-            }
-        default:
-            answers.forEach { $0.activateButton(bool: false) }
+                
         }
         answerA.text = questions[questionId].answerA
         answerB.text = questions[questionId].answerB

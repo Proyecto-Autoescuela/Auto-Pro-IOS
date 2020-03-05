@@ -14,10 +14,11 @@ class ResultsViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print(fallo, " " ,acierto)
         if(fallos<3){
-          resultLabel.text = "Has aprobado has tenido solo \(fallos) fallos"
+          resultLabel.text = "Has aprobado has tenido solo \(fallo) fallos"
         }else{
-            resultLabel.text = "Has suspendido has tenido \(fallos) fallos"
+            resultLabel.text = "Has suspendido has tenido \(fallo) fallos"
         }
         Network.postTest()
     }
