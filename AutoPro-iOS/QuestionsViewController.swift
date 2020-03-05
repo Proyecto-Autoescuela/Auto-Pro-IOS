@@ -101,7 +101,7 @@ class QuestionsViewController: UIViewController {
         answerA.text = questions[questionId].answerA
         answerB.text = questions[questionId].answerB
         answerC.text = questions[questionId].answerC
-        let baseURL = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/storage/app/public/")!
+        let baseURL = URL(string: "http://localhost:8888/AutoPro-Api/storage/app/public/")!
         let placeholderImage = UIImage(named: "autoescuela-logo.png")
         let remoteImageURL = baseURL.appendingPathComponent(questions[questionId].photoURL)
         img?.sd_setImage(with: remoteImageURL, placeholderImage: placeholderImage)

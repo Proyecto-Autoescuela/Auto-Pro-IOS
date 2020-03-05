@@ -68,7 +68,7 @@ class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.labelUnits.text = themes[indexPath.row].name
         
         
-        let baseURL = URL(string: "http://localhost:8888/AutoPro-API-features-migrations/storage/app/public/")!
+        let baseURL = URL(string: "http://localhost:8888/AutoPro-Api/storage/app/public/")!
         let placeholderImage = UIImage(named: "autoescuela-logo.png")
         let remoteImageURL = baseURL.appendingPathComponent(themes[indexPath.row].img!)
         

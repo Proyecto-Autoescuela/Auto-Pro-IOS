@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onClickButton(_ sender: Any) {
-        UserDefaults.standard.set(loginName.text!, forKey: "email")
+//        UserDefaults.standard.set(loginName.text!, forKey: "email")
         
         guard let email = loginName.text, loginName.text?.count != 0 else {
                 createAlert(title: "Fallo", message: "Pon tu Usuario para continuar")

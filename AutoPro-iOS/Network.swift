@@ -12,9 +12,9 @@ import Alamofire
 class Network{
     static var id:Int = 1
     
-    
+    static let localhost : String = "http://localhost:8888/AutoPro-Api/public/api/"
     class func GetLessons (completed: @escaping () -> ()) {
-        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/unit")
+        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/unit")
         
         let json = ["api_token": "24"]
         
@@ -34,9 +34,35 @@ class Network{
             }.resume()
     }
     
+    static var units = [Unidades]()
+    
+    class func GetUnits (id : String, completed: @escaping () -> ()) {
+        
+        let url = URL(string: localhost + "unitcontent/\(id)")
+        //        let url = URL(string: "http://localhost:8888/Api-AutoPro/public/api/unitcontent/\(idThemes!)")
+        
+        let json = ["api_token": "24"]
+        
+        Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
+            print(response)
+            
+            
+            do {
+                units = try JSONDecoder().decode([Unidades].self, from: response.data!)
+                DispatchQueue.main.async{
+                    completed()
+                }
+                
+            }catch {
+                print(error)
+                
+            }
+            }.resume()
+    }
+    
     // Login
     class func getUser(email: String, password: String, sender: Any, completion: @escaping (Bool, Bool) -> ()){
-            let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/loginApp")
+            let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/loginApp")
             let json = ["email": email,
                         "password": password,
                         "api_token": "24"]
@@ -106,7 +132,7 @@ class Network{
     
     class func getTest(completed: @escaping () -> ()){
         
-        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/prueba")
+        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/prueba")
         let json = ["unit_id": unitIdTest]
         
         Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
@@ -136,7 +162,7 @@ class Network{
         let strid = String(id)
         let stridt = String(unitIdTest)
         let stra = String(aciertos)
-        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/prueba/add/\(strid)/\(stridt)/\(stra)")
+        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/prueba/add/\(strid)/\(stridt)/\(stra)")
         let json: Parameters =  ["unit_id": unitIdTest, "calification": aciertos, "student_id": id]
         print(url!)
         Alamofire.request(url!, method: .post, parameters: json).responseJSON { (response) in

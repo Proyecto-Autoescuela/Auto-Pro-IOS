@@ -40,11 +40,11 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onClickLogout(_ sender: Any) {
-        /*UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "email")
         let vc = storyboard?.instantiateViewController(withIdentifier: "ViewController")
         let navVC = UINavigationController(rootViewController: vc!)
         let share = UIApplication.shared.delegate as? AppDelegate
         share?.window?.rootViewController = navVC
-        share?.window?.makeKeyAndVisible()*/
+        share?.window?.makeKeyAndVisible()
     }
 }

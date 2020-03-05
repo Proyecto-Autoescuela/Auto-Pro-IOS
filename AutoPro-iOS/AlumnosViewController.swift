@@ -60,7 +60,7 @@ class AlumnosViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         
 
-        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/students/teacher/\(id_user_string)")
+        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/students/teacher/\(id_user_string)")
 
         let json = ["api_token": "24"]
 

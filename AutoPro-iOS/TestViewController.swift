@@ -47,14 +47,14 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
         
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("celda pulsada")
-//        unitIdTest = indexPath.row+1
-//        
-//        Network.getTest {
-//            self.performSegue(withIdentifier: "tests", sender: nil)
-//        }
-//        
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("celda pulsada")
+        unitIdTest = indexPath.row+1
+        
+        Network.getTest {
+            self.performSegue(withIdentifier: "tests", sender: nil)
+        }
+        
+    }
     
 }
