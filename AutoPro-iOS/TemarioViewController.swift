@@ -10,10 +10,8 @@ import UIKit
 import Alamofire
 import SDWebImage
 
-var themes = [Temario]()
+//var themes = [Temario]()
 var idThemes: Int?
-
-
 
 class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -31,7 +29,7 @@ class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     
    //metodo que indicamos que el tabeView tenga el mismo tamaño que el array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return themes.count
+        return Network.themes.count
     }
     //metodo que define la altura de las celdas
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -42,20 +40,20 @@ class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("celda pulsada")
-        unidadTemario = themes[indexPath.row].name!.capitalized
-        idThemes = themes[indexPath.row].id
-        
-        
-
+        unidadTemario = Network.themes[indexPath.row].name!.capitalized
+        idThemes = Network.themes[indexPath.row].id
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let item = ( sender as? CustomTableViewCell) else { return }
         guard let indexPath = self.tableView.indexPath(for: item) else {return}
-        let idThemes = themes[indexPath.row].id
-        let idThemeString:String = "\(idThemes)"
+        let idThemes = Network.themes[indexPath.row].id
         let info = segue.destination as! ListarUnidadesViewController
         info.idString = "\(idThemes!)" as! String
+        
+//        let info  = segue.destination as! Network
+//        info.Network.idString = "\(idThemes!)" as! String
 
         
     }
@@ -65,15 +63,14 @@ class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
 
-        cell.labelUnits.text = themes[indexPath.row].name
+        cell.labelUnits.text = Network.themes[indexPath.row].name
         
         
-        let baseURL = URL(string: "http://localhost:8888/AutoPro-API-features-migrations/storage/app/public/")!
+        let baseURL = URL(string: "http://localhost:8888/Api-AutoPro/storage/app/public")!
         let placeholderImage = UIImage(named: "autoescuela-logo.png")
-        let remoteImageURL = baseURL.appendingPathComponent(themes[indexPath.row].img!)
-        
+        print(Network.themes)
+        let remoteImageURL = baseURL.appendingPathComponent(Network.themes[indexPath.row].img!)
         print(remoteImageURL)
-
         cell.imageUnits?.sd_setImage(with: remoteImageURL, placeholderImage: placeholderImage)
         
         

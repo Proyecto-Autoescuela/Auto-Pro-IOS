@@ -29,7 +29,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //metodo que indicamos que el tabeView tenga el mismo tamaño que el array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return themes.count
+        return Network.themes.count
     }
     //metodo que define la altura de las celdas
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -42,7 +42,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
         
-        cell.labelTests.text = themes[indexPath.row].name
+        cell.labelTests.text = Network.themes[indexPath.row].name
         
         return cell
         

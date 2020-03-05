@@ -11,6 +11,6 @@ import Foundation
 class Unidades: Codable {
     var id : Int?
     var name : String?
-    var unit_url : String?
-    
+    var img : String?
+    var content_unit : String
 }

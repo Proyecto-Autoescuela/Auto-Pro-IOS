@@ -6,6 +6,7 @@
 //  Copyright © 2020 alumnos. All rights reserved.
 //
 
+
 import Foundation
 
 class Unidad: Codable {
@@ -27,6 +28,6 @@ struct Unit: Codable {
     
     enum CodingKeys: String, CodingKey {
         case name
-        case contentUnit 
+        case contentUnit
     }
 }

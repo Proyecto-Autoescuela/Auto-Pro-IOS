@@ -20,9 +20,10 @@ class LoginViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        Network.GetLessons{
-            //
-        }
+        
+        loginName.text = "raulgon@cev.com"
+        loginPassword.text = "raul123"
+       
 //        Network.postTest()
         Network.getTest {
             //
@@ -31,7 +32,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onClickButton(_ sender: Any) {
-        UserDefaults.standard.set(loginName.text!, forKey: "email")
+//        UserDefaults.standard.set(loginName.text!, forKey: "email")
         
         guard let email = loginName.text, loginName.text?.count != 0 else {
                 createAlert(title: "Fallo", message: "Pon tu Usuario para continuar")
@@ -51,6 +52,9 @@ class LoginViewController: UIViewController {
             if result == true{
                     
                 if student {
+                    Network.GetLessons{
+                        
+                    }
                     self.performSegue(withIdentifier: "alumno", sender: sender)
                         
                 }else{
@@ -90,8 +94,7 @@ class LoginViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
+
     
 }
 
