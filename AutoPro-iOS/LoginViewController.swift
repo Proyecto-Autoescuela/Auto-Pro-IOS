@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginName: UITextField!
     @IBOutlet weak var loginPassword: UITextField!
     
+    
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     
@@ -26,12 +27,7 @@ class LoginViewController: UIViewController {
         loginName.text = "raulgon@cev.com"
         loginPassword.text = "raul123"
         
-        
-        
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        self.view.addSubview(activityIndicator)
+
         
 //        Network.GetLessons{
 //            //
@@ -45,9 +41,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func onClickButton(_ sender: Any) {
 //        UserDefaults.standard.set(loginName.text!, forKey: "email")
+        self.showSpinner()
         
-        activityIndicator.startAnimating()
-        
+        Timer.scheduledTimer(withTimeInterval: 20.0, repeats: false) { (t) in
+            print("done")
+            
+        }
         guard let email = loginName.text, loginName.text?.count != 0 else {
                 createAlert(title: "Fallo", message: "Pon tu Usuario para continuar")
                 return
@@ -105,11 +104,6 @@ class LoginViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-//
-//    @IBAction func loginButton(_ sender: Any) {
-//        activityIndicator.startAnimating()
-//    }
     
 }
 
