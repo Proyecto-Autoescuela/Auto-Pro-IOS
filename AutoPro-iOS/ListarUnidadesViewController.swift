@@ -46,6 +46,8 @@ class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
             cell.UnitsName.text = Network.units[indexPath.row].name
+        
+    
             let baseURL = URL(string: "http://localhost:8888/AutoPro-API-features-migrations/storage/app/")!
             let placeholderImage = UIImage(named: "autoescuela-logo.png")
 //            print(units)
@@ -74,30 +76,5 @@ class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITab
         
     }
 
- 
-//    func GetUnits (id : String, completed: @escaping () -> ()) {
-//     
-//        let url = URL(string: "http://localhost:8888/Api-AutoPro/public/api/unitcontent/\(id)")
-////        let url = URL(string: "http://localhost:8888/Api-AutoPro/public/api/unitcontent/\(idThemes!)")
-//
-//        let json = ["api_token": "24"]
-//        
-//        Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
-//            print(response)
-//            
-//            
-//            do {
-//                self.units = try JSONDecoder().decode([Unidades].self, from: response.data!)
-//                DispatchQueue.main.async{
-//                    completed()
-//                }
-//
-//            }catch {
-//                print(error)
-//
-//            }
-//            }.resume()
-//    }
-    
 }
 

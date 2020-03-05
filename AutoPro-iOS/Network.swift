@@ -63,7 +63,34 @@ class Network{
             }
             }.resume()
     }
+    
+     static var unit = Unidad()
 
+    //peticion del contenido del tema
+    
+    class func GetContent (id : String, completed: @escaping () -> ()) {
+        
+        let url = URL(string: "http://localhost:8888/Api-AutoPro/public/api/unitcontent/unit/\(id)")
+        
+        let json = ["api_token": "24"]
+        
+        Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
+            print(response)
+            
+            do {
+                
+                unit = try JSONDecoder().decode(Unidad.self, from: response.data!)
+                DispatchQueue.main.async{
+                    completed()
+                    
+                }
+                
+            }catch {
+                print(error)
+                
+            }
+            }.resume()
+    }
     
     
     // peticion Login
