@@ -10,12 +10,13 @@ import Alamofire
 import SDWebImage
 
 var idUnit:Int?
+var units = [Unidades]()
 
 class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
     @IBOutlet weak var tableView: UITableView!
     
-    //    var units = [Unidades]()
+//    var units = [Unidades]()
     
     var idString: String?
     
@@ -46,12 +47,11 @@ class ListarUnidadesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
         cell.UnitsName.text = Network.units[indexPath.row].name
-        let baseURL = URL(string: "http://localhost:8888/AutoPro-API-features-migrations/storage/app/")!
+        let baseURL = URL(string: "http://localhost:8888/AutoPro-Api/storage/app/public/")!
         let placeholderImage = UIImage(named: "autoescuela-logo.png")
-        //            print(units)
-        //        let remoteImageURL = baseURL.appendingPathComponent(units[indexPath.row].unit_url ?? "autoescuela-logo.png")
-        //
-        //          cell.UnitsImage?.sd_setImage(with: remoteImageURL, placeholderImage: placeholderImage)
+        print(units)
+        let remoteImageURL = baseURL.appendingPathComponent(Network.units[indexPath.row].unit_url ?? "")
+        cell.UnitsImage?.sd_setImage(with: remoteImageURL, placeholderImage: placeholderImage)
         
         return cell
     }

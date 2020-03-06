@@ -39,7 +39,7 @@ class Network{
     class func GetUnits (id : String, completed: @escaping () -> ()) {
         
         let url = URL(string: localhost + "unitcontent/\(id)")
-        //        let url = URL(string: "http://localhost:8888/Api-AutoPro/public/api/unitcontent/\(idThemes!)")
+//                let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/unitcontent/\(idThemes!)")
         
         let json = ["api_token": "24"]
         
@@ -51,6 +51,34 @@ class Network{
                 units = try JSONDecoder().decode([Unidades].self, from: response.data!)
                 DispatchQueue.main.async{
                     completed()
+                }
+                
+            }catch {
+                print(error)
+                
+            }
+            }.resume()
+    }
+    
+    static var unit = Unidad()
+    
+    //peticion del contenido del tema
+    
+    class func GetContent (id : String, completed: @escaping () -> ()) {
+        
+        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/unitcontent/unit/\(id)")
+        
+        let json = ["api_token": "24"]
+        
+        Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
+            print(response)
+            
+            do {
+                
+                unit = try JSONDecoder().decode(Unidad.self, from: response.data!)
+                DispatchQueue.main.async{
+                    completed()
+                    
                 }
                 
             }catch {

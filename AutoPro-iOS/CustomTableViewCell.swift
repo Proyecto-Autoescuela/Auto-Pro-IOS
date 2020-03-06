@@ -16,6 +16,8 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var labelUnits: UITextView!
     
     //Elmenetos de la pantalla Listar Unidades
+    
+    @IBOutlet weak var cellUnitsView: UIView!
     @IBOutlet weak var UnitsImage: UIImageView!
     @IBOutlet weak var UnitsName: UITextView!
     

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SDWebImage
 
-var units = Unidad()
+
 
 class UnidadViewController: UIViewController {
     
@@ -23,40 +23,13 @@ class UnidadViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        GetUnits {
+        Network.GetContent(id: idUnitString!) {
             
-            print(units)
-            self.unidadLabel.text = units.name
-            self.contentLabel.text = units.content_unit
+            self.unidadLabel.text = Network.unit.name
+            self.contentLabel.text = Network.unit.content_unit
             
         }
         
-    }
-    
-    //Peticion de Contenido del tema
-    
-    func GetUnits (completed: @escaping () -> ()) {
-        
-        let url = URL(string: "http://localhost:8888/AutoPro-Api/public/api/unit/\(idUnitString!)")
-        
-        let json = ["api_token": "24"]
-        
-        Alamofire.request(url!, method: .get, parameters: json, headers: nil).responseJSON { (response) in
-            print(response)
-            
-            do {
-                
-                units = try JSONDecoder().decode(Unidad.self, from: response.data!)
-                DispatchQueue.main.async{
-                    completed()
-                    
-                }
-                
-            }catch {
-                print(error)
-                
-            }
-            }.resume()
     }
     
     override func didReceiveMemoryWarning() {
