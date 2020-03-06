@@ -37,7 +37,7 @@ class UnidadViewController: UIViewController {
     
     func GetUnits (completed: @escaping () -> ()) {
         
-        let url = URL(string: "http://localhost:8888/autopro/AutoPro-API-features-migrations/public/api/unit/\(idUnitString!)")
+        let url = URL(string: "http://localhost:8888/AutoPro-API/public/api/unit/\(idUnitString!)")
         
         let json = ["api_token": "24"]
         

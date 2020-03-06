@@ -11,7 +11,6 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBAction func imagenTest(_ sender: UIButton) {
         
-        
     }
     
     @IBAction func imagenTemas(_ sender: UIButton) {

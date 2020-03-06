@@ -40,6 +40,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Este método: cellForRowAtIndexPath(), nos permite especificar los datos que mostraremos en cada celda y se ejecutará tantas veces como le hayamos indicado en el numberofrowsSection
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
         
         cell.labelTests.text = themes[indexPath.row].name

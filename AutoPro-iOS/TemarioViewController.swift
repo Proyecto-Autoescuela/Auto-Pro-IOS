@@ -16,9 +16,10 @@ var idThemes: Int?
 
 
 class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var unidadTemario: String = ""
     var idString: String?
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,9 +45,6 @@ class TemarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("celda pulsada")
         unidadTemario = themes[indexPath.row].name!.capitalized
         idThemes = themes[indexPath.row].id
-        
-        
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
